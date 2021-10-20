@@ -1,16 +1,16 @@
 let userData = [];
 
 const fetchUser = async () => {
-    await fetch('https://randomuser.me/api/?results=24') // d'abord on récupère l'API
+    await fetch('https://randomuser.me/api/?results=24') 
         .then((res) => res.json())
-        .then((data) => (userData = data.results)); // on appelle data le résultat du res.json
+        .then((data) => (userData = data.results));
     console.log(userData)
 };
 
 const userDisplay = async () => {
     await fetchUser();
 
-    const dateParser = (date) => { // on va utliser dateParser dans le map :
+    const dateParser = (date) => { 
         let newDate = new Date(date).toLocaleDateString("fr-FR", {
             year: "numeric",
             month: "long",
@@ -24,10 +24,10 @@ const userDisplay = async () => {
         let todayTimeStamp = Date.parse(today);
         let timestamp = Date.parse(date);
 
-        return Math.ceil((todayTimeStamp - timestamp) / 8.64e7); //ceil : on arrondit
+        return Math.ceil((todayTimeStamp - timestamp) / 8.64e7); 
     };
 
-    document.body.innerHTML = userData.map( // on met en forme les données grace a inner HTML et MAP
+    document.body.innerHTML = userData.map( 
         (user) =>
             `
     <div class="card">
